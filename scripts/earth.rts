@@ -1,0 +1,11 @@
+c   25,10,15   0,0,1    45
+
+a   .01    1,1,1
+p   10,8,-5   .99   .96,.93,.7
+
+mt   mat1   earthmap.jpg  0  0  .15  0  0  .1
+mt   mat2   skysphere10.jpg   0  0  0  0  0  .45
+
+sp  0,0,0  5  mat1
+
+ss  mat2

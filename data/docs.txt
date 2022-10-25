@@ -1,0 +1,44 @@
+---- CAMERA AND LIGHT SOURCES ----
+
+c    0,0,0    0,0,1    45    //    mandatory object
+Set a camera to (0,0,0) pointing at (0,0,1) with a 45 (in the range from 1 to 89) degree field of view along the Y axis.
+
+a    .07    .5,.5,.1
+Set a ambient light source with color .5,.5,.1 (each component in the range from 0 to 1) and intensity .07
+
+p    -4,5,10    .6    1,0,1
+Set a point light source to (-4,5,10) with color 1,0,1 and intensity .6
+
+---- MATERIALS ----
+
+There are two ways to declare materials
+Note: all intensities and coefficients below are in the range from 0 to 1 except refractive index.
+
+mt    mat1    marble.jpg    32    .5    .21    0    1    .1
+Set a material named "mat1" with diffuse texture marble.jpg, specular exponent coefficient 32 (recommended interval from 1.1 to 1000), specular intensity .5, reflectivity .21, transparency 0, refractive index 1 and emissivity .1
+
+mt    mat1    .63,.33,.63    32    .5    .21    0    1    .1
+Set a material the same as previous with diffuse color .63,.33,.63 instead of diffuse texturing.
+
+---- SHAPES ----
+
+cu    1,2,3    1,0,0    0,1,0    4    mat1
+Set a cube to (1,2,3) with binormal 1,0,0, tangent 0,1,0 and side 4, made of material "mat1".
+
+cy    14,5,8    2,-3,12    3    mat0
+Set a cylinder with base centers at (14,5,8), (2,-3,12) and base radius 3.
+
+pl    3,-1,2    .1,.3,0    mat1
+Set a plane passing through a point (3,-1,2), with normal .1,.3,0, made of material named "mat1".
+
+ss    mat3
+Set a skysphere made of material "mat3".
+
+sp    1,0,1    3.2    mat2
+Set a sphere to (1,0,1) with radius 3.2, made of material "mat2".
+
+sq    -2,0,-1    .3,0,-1    1,0,0    1    mat4
+Set a square to (-2,0,-1) with normal .3,0,-1, binormal 1,0,0 and side 1, made of material "mat4".
+
+tr    -2,-1,5    0,3,5    3,-2,5    mat2
+Set a triangle formed by vertices (-2,-1,5), (0,3,5) and (3,-2,5), made of material "mat2".

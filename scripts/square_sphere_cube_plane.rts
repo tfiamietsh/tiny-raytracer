@@ -1,0 +1,19 @@
+c   0,0,-10   0,0,1    45
+
+a   .07    1,1,1
+p   4,7,10   .6   1,0,1
+p   7,5,12    .6   1,1,0
+p   12,5,10   .6   0,1,1
+
+mt    mat1    marble.jpg    32   .5  .21  0  1  .1
+mt    mat2    dou.jpg    32   .5  .21  .5  1  0
+mt    mat3    shufu.jpg   32    0  .01  0  1  .4
+mt    mat4    metal.jpg    4   0  .2  0  1  0
+mt    mat5    skysphere2.jpg   0   0   0   0   0   1
+
+sp   4,2,20   2   mat1
+cu   4,-5,20   1,0,0   0,1,0   2   mat2
+sq   -9,0,25   .5,0,-.86   .86,0,.5   14    mat3
+pl   0,-10,0    0,1,0    mat4
+
+ss   mat5
