@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -60,7 +61,7 @@
                         <children>
                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                               <children>
-                                 <ImageView fx:id="prerenderImageView" fitHeight="147.0" fitWidth="221.0" pickOnBounds="true" />
+                                 <ImageView fx:id="prerenderImageView" fitHeight="147.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true" />
                               </children>
                            </HBox>
                            <Separator prefWidth="200.0" />
@@ -113,7 +114,7 @@
                            </TitledPane>
                            <TitledPane text="Tracer Properties">
                              <content>
-                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="200.0">
+                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="232.0">
                                     <children>
                                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="234.0">
                                           <children>
@@ -144,6 +145,13 @@
                                                 <children>
                                                    <Label text="    " />
                                                    <TextField fx:id="resourcesDirectoryTextField" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.5" prefHeight="25.0" prefWidth="205.0" />
+                                                </children>
+                                             </HBox>
+                                             <Separator prefWidth="200.0" />
+                                             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0">
+                                                <children>
+                                                   <Label text="     Shadow Samples     " />
+                                                   <ChoiceBox fx:id="shadowSamplesNumChoiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="95.0" />
                                                 </children>
                                              </HBox>
                                              <Separator prefWidth="200.0" />
@@ -179,7 +187,7 @@
                                           <children>
                                              <HBox alignment="CENTER" prefHeight="369.3333333333333" prefWidth="704.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                 <children>
-                                                   <ImageView fx:id="renderImageView" fitHeight="373.0" fitWidth="704.0" pickOnBounds="true" />
+                                                   <ImageView fx:id="renderImageView" fitHeight="373.0" fitWidth="704.0" pickOnBounds="true" preserveRatio="true" />
                                                 </children>
                                              </HBox>
                                           </children>

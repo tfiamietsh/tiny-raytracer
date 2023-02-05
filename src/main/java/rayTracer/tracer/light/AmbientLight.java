@@ -3,7 +3,6 @@ package rayTracer.tracer.light;
 import rayTracer.tracer.misc.Material;
 import rayTracer.tracer.misc.Vertex;
 import rayTracer.util.Color;
-import rayTracer.util.Vec2;
 import rayTracer.util.Vec3;
 import rayTracer.tracer.RTObject;
 
@@ -27,7 +26,7 @@ public class AmbientLight extends Light implements RTObject {
         AmbientLight ambientLight = new AmbientLight();
 
         ambientLight.setIntensity(dblParams.get(0));
-        ambientLight.setPosition(new Vec3(Double.MAX_VALUE, .0, .0));
+        ambientLight.setPosition(new Vec3(Vec3.infinity, Vec3.infinity, Vec3.infinity));
         ambientLight.setColor(new Color(dblParams.get(1), dblParams.get(2), dblParams.get(3)));
 
         return ambientLight;

@@ -1,5 +1,6 @@
 package rayTracer.ui;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.TextArea;
@@ -46,6 +47,10 @@ public class WorkspaceController {
 
         int coresCount = Runtime.getRuntime().availableProcessors();
         coresSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, coresCount));
+
+        shadowSamplesNumChoiceBox.setItems(FXCollections.observableArrayList(
+                "1x", "4x", "9x", "16x", "25x", "36x", "49x"));
+        shadowSamplesNumChoiceBox.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -72,8 +77,8 @@ public class WorkspaceController {
     public void onClickAbout() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
-        alert.setHeaderText("Tiny Ray Tracer on Pure Java ver .97 2nd Edition");
-        alert.setContentText("by tfiamietsh, 2022");
+        alert.setHeaderText("Tiny Ray Tracer on Pure Java ver .98 2nd Edition");
+        alert.setContentText("by tfiamietsh, 2022-2023");
         alert.showAndWait();
     }
 
@@ -82,8 +87,12 @@ public class WorkspaceController {
         String outputFullPath = outputDirectoryTextField.getText() + "\\pre" +
                 filenameTextField.getText() + ".png";
         Script scriptExecutor = new Script();
+        String shadowSamplesNumString = shadowSamplesNumChoiceBox.getValue();
+        int shadowSamplesNum = (int) Math.sqrt(Integer.parseInt(shadowSamplesNumString.substring(0,
+                shadowSamplesNumString.length() - 1)));
         String errors = scriptExecutor.tryToExecuteScript(outputFullPath, scriptTextArea.getText(),
-                new Dimension(221, 147), coresSpinner.getValue(), (int) maxRayDepthSlider.getValue());
+                new Dimension(221, 147), coresSpinner.getValue(),
+                (int) maxRayDepthSlider.getValue(), shadowSamplesNum);
 
         if (!errors.equals("")) {
             errorsTextArea.setStyle("-fx-text-fill: #EE0000;");
@@ -101,10 +110,13 @@ public class WorkspaceController {
         String outputFullPath = outputDirectoryTextField.getText() + '\\' +
                 filenameTextField.getText() + ".png";
         Script scriptExecutor = new Script();
+        String shadowSamplesNumString = shadowSamplesNumChoiceBox.getValue();
+        int shadowSamplesNum = (int) Math.sqrt(Integer.parseInt(shadowSamplesNumString.substring(0,
+                shadowSamplesNumString.length() - 1)));
         String errors = scriptExecutor.tryToExecuteScript(outputFullPath, scriptTextArea.getText(),
                 new Dimension(Integer.parseInt(dimensionWidthTextField.getText()),
                 Integer.parseInt(dimensionHeightTextField.getText())),
-                coresSpinner.getValue(), (int) maxRayDepthSlider.getValue());
+                coresSpinner.getValue(), (int) maxRayDepthSlider.getValue(), shadowSamplesNum);
 
         if (!errors.equals("")) {
             errorsTextArea.setStyle("-fx-text-fill: #EE0000;");
@@ -154,6 +166,7 @@ public class WorkspaceController {
     @FXML private ImageView prerenderImageView, renderImageView;
     @FXML private Spinner<Integer> coresSpinner;
     @FXML private Slider maxRayDepthSlider;
+    @FXML private ChoiceBox<String> shadowSamplesNumChoiceBox;
     private FileChooser fileChooser;
     private DirectoryChooser directoryChooser;
 }

@@ -33,16 +33,17 @@ public class Script {
         keywords.put("ss", new Keyword(new Skysphere()));
     }
 
-    public String tryToExecuteScript(String outputFullPath, String script,
-                                     Dimension resolution, int cores, int maxDepth) {
+    public String tryToExecuteScript(String outputFullPath, String script, Dimension resolution,
+                 int cores, int maxDepth, int shadowSamplesNum) {
         String errors = checkForErrors(script);
         if (errors.equals(""))
-            executeScript(outputFullPath, script, resolution, cores, maxDepth);
+            executeScript(outputFullPath, script, resolution, cores, maxDepth,
+                    shadowSamplesNum);
         return errors;
     }
 
-    private void executeScript(String outputFullPath, String script,
-                               Dimension resolution, int cores, int maxDepth) {
+    private void executeScript(String outputFullPath, String script, Dimension resolution,
+               int cores, int maxDepth, int shadowSamplesNum) {
         Scene scene = new Scene();
 
         String[] lines = script.split("\r\n|\r|\n");
@@ -62,7 +63,7 @@ public class Script {
         }
 
         RayTracer tracer = new RayTracer();
-        tracer.configure(resolution, maxDepth);
+        tracer.configure(resolution, maxDepth, shadowSamplesNum);
         tracer.render(outputFullPath, scene, cores);
     }
 
