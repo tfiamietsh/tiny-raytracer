@@ -1,4 +1,4 @@
-# Tiny Ray Tracer on Pure Java
+# Raytracer on pure Java
 
 ### [v.98 stable](https://github.com/tfiamietsh/RayTracer/commit/75b5c83f1b3f3780192e44771cacb7a0135e1026)
 
